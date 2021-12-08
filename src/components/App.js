@@ -6,10 +6,12 @@ import React, { useState, useEffect } from 'react';
 import DataApi from '../services/DataApi';
 
 function App() {
-  //estados//
+  // States variables
   const [data, setData] = useState([]);
 
-  //useEffect//
+  // Handle functions
+
+  // useEffect//
   useEffect(() => {
     DataApi().then((data) => {
       setData(data);
@@ -17,9 +19,27 @@ function App() {
     });
   }, []);
 
+  // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlItemList
+  // Then add the array with map
+
+  const htmlItemList = data.map((item, index) => (
+    <li key={index} className="list__item">
+      <p className="list__item--name">Id: {item.id}</p>
+      <p className="list__item--title">Título: {item.title}</p>
+      <p className="list__item--url">Url: {item.url}</p>
+      <div className="list__errase--container"></div>
+    </li>
+  ));
+
   return (
-    <div>
-      <h1 className="uno">Hola mundo</h1>
+    <div className="page">
+      <header className="header">
+        <h1 className="header__title">Resultados</h1>
+      </header>
+      <main>
+        {/* results list */}
+        <ul className="club__list">{htmlItemList}</ul>
+      </main>
     </div>
   );
 }

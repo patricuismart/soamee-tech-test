@@ -2,7 +2,7 @@ function getDataFromApi() {
   return fetch('https://jsonplaceholder.typicode.com/photos')
     .then((response) => response.json())
     .then((json) => {
-      //limpio datos que me llegan Api con el map
+      //Clean data recived from Api with a map
       return json.map((item) => {
         console.log('Fetch', item);
         return {
