@@ -1,15 +1,17 @@
 function getDataFromApi() {
   for (let index = 0; index < 25; index++) {
-    return fetch(`https://jsonplaceholder.typicode.com/photos`)
+    return fetch(`https://jsonplaceholder.typicode.com/users`)
       .then((response) => response.json())
       .then((json) => {
         //Clean data recived from Api with a map
-        return json.map((item) => {
-          console.log('Fetch', item);
+        return json.map((user) => {
+          console.log('Fetch', user);
           return {
-            id: item.id,
-            title: item.title,
-            url: item.url,
+            name: user.name,
+            email: user.email,
+            city: user.address.city,
+            company: user.company.name,
+            website: user.website,
           };
         });
       });

@@ -23,14 +23,16 @@ function App() {
     });
   }, []);
 
-  // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlItemList
+  // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlUserList
   // Then add the array with map
 
-  const htmlItemList = data.map((item, index) => (
-    <li key={index} className="list__item">
-      <p className="list__item--name">Id: {item.id}</p>
-      <p className="list__item--title">Título: {item.title}</p>
-      <p className="list__item--url">Url: {item.url}</p>
+  const htmlUserList = data.map((user, index) => (
+    <li key={index} className="list__user">
+      <p className="list__user--name">Nombre: {user.name}</p>
+      <p className="list__user--email">Email: {user.email}</p>
+      <p className="list__user--city">Ciudad: {user.city}</p>
+      <p className="list__user--company">Empresa: {user.company}</p>
+      <p className="list__user--website">Web: {user.website}</p>
       <div className="list__errase--container"></div>
     </li>
   ));
@@ -40,7 +42,7 @@ function App() {
       <Header />
       <main>
         {/* results list */}
-        <ul className="club__list">{htmlItemList}</ul>
+        <ul className="user__list">{htmlUserList}</ul>
       </main>
       <Footer />
     </div>
