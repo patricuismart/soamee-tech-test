@@ -1,5 +1,5 @@
 // File src/components/App.js
-import '../styles/App.scss';
+import '../styles/main.scss';
 import React, { useState, useEffect } from 'react';
 
 // Layout
@@ -27,14 +27,21 @@ function App() {
   // Then add the array with map
 
   const htmlUserList = data.map((user, index) => (
-    <li key={index} className="list__user">
-      <p className="list__user--name">Nombre: {user.name}</p>
-      <p className="list__user--email">Email: {user.email}</p>
-      <p className="list__user--city">Ciudad: {user.city}</p>
-      <p className="list__user--company">Empresa: {user.company}</p>
-      <p className="list__user--website">Web: {user.website}</p>
-      <div className="list__errase--container"></div>
-    </li>
+    <>
+      <li key={index} className="list__user">
+        <p className="list__user--name">Nombre: {user.name}</p>
+        <p className="list__user--email">Email: {user.email}</p>
+        <p className="list__user--city">Ciudad: {user.city}</p>
+        <p className="list__user--company">Empresa: {user.company}</p>
+        <p className="">
+          Web:{' '}
+          <a href="{user.website}" className="list__user--website">
+            {user.website}
+          </a>
+        </p>
+        <div className="list__errase--container"></div>
+      </li>
+    </>
   ));
 
   return (
@@ -42,7 +49,7 @@ function App() {
       <Header />
       <main>
         {/* results list */}
-        <ul className="user__list">{htmlUserList}</ul>
+        <ul className="list">{htmlUserList}</ul>
       </main>
       <Footer />
     </div>

@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media all and (min-width: 768px) {
+    justify-content: space-around;
+  }
+  &__user {
+    list-style: none;
+    margin: 1rem 1.5rem 0;
+    padding: 1rem;
+    width: 95%;
+    line-height: 2rem;
+    font-size: 1rem;
+    height: 13rem;
+    border: 1px solid (127, 194, 241);
+    background-color: $lightpurple;
+    color: $dark-grey;
+    border-radius: 1rem;
+    text-decoration: none;
+    &--name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    &--website {
+      text-decoration: none;
+      color: $dark-grey;
+      font-weight: bold;
+    }
+    &:hover {
+      border: solid 0.4rem $button-color;
+    }
+  }
+}
