@@ -2,6 +2,10 @@
 import '../styles/App.scss';
 import React, { useState, useEffect } from 'react';
 
+// Layout
+import Header from './Header';
+import Footer from './Footer';
+
 // services
 import DataApi from '../services/DataApi';
 
@@ -33,13 +37,12 @@ function App() {
 
   return (
     <div className="page">
-      <header className="header">
-        <h1 className="header__title">Resultados</h1>
-      </header>
+      <Header />
       <main>
         {/* results list */}
         <ul className="club__list">{htmlItemList}</ul>
       </main>
+      <Footer />
     </div>
   );
 }
