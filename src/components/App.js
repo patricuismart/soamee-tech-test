@@ -34,7 +34,6 @@ function App() {
         <p className="list__user--city">Ciudad: {user.city}</p>
         <p className="list__user--company">Empresa: {user.company}</p>
         <p className="">
-          Web:{' '}
           <a href="{user.website}" className="list__user--website">
             {user.website}
           </a>

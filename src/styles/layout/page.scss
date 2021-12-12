@@ -11,8 +11,9 @@
     justify-content: space-around;
   }
   &__user {
+    cursor: pointer;
     list-style: none;
-    margin: 1rem 1.5rem 0;
+    margin: 1rem 1.4rem 0;
     padding: 1rem;
     width: 95%;
     line-height: 2rem;
