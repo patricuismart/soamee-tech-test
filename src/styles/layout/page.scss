@@ -37,4 +37,19 @@
       border: solid 0.4rem $button-color;
     }
   }
+
+  .card__errase--container {
+    text-align: end;
+  }
+  .card__errase--btn {
+    padding: 0rem 0.5rem 40rem;
+
+    color: rgb(80, 75, 75);
+    cursor: pointer;
+    transform: scale(1.5);
+
+    &:hover {
+      color: rgb(121, 144, 160);
+    }
+  }
 }

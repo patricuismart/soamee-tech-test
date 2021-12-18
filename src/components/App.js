@@ -47,6 +47,15 @@ function App() {
     });
   }, []);
 
+  //Errase Card button "x"
+
+  const handleErrase = (ev) => {
+    ev.preventDefault();
+    data.splice(ev.target.id, 1);
+    console.log(ev.target.id);
+    setData([...data]);
+  };
+
   // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlUserList
   // Then add the array with map
 
@@ -62,7 +71,13 @@ function App() {
             {user.website}
           </a>
         </p>
-        <div className="list__errase--container"></div>
+        <div className="card__errase--container">
+          <i
+            className="fas fa-times-circle card__errase--btn"
+            id={index}
+            onClick={handleErrase}
+          ></i>
+        </div>
       </li>
     </>
   ));
