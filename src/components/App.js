@@ -1,14 +1,16 @@
 // File src/components/App.js
 import '../styles/main.scss';
 import React, { useState, useEffect } from 'react';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 // Layout
 import Header from './Header';
-import NewCard from './NewCard';
 import Footer from './Footer';
+import CardDetail from './CardDetail';
 
 // services
 import DataApi from '../services/DataApi';
+import CreateCard from './CreateCard';
 
 function App() {
   // States variables
@@ -43,7 +45,7 @@ function App() {
   useEffect(() => {
     DataApi().then((data) => {
       setData(data);
-      console.log('Useeffect data', data);
+      //console.log('Useeffect data', data);
     });
   }, []);
 
@@ -63,12 +65,9 @@ function App() {
     <>
       <li key={index} className="list__user">
         <p className="list__user--name">Nombre: {user.name}</p>
-        <p className="list__user--email">Email: {user.email}</p>
-        <p className="list__user--city">Ciudad: {user.city}</p>
-        <p className="list__user--company">Empresa: {user.company}</p>
         <p className="">
           <a href="{user.website}" className="list__user--website">
-            {user.website}
+            Web:{user.website}
           </a>
         </p>
         <div className="card__errase--container">
@@ -81,6 +80,10 @@ function App() {
       </li>
     </>
   ));
+
+  //Show create new card
+
+  const handleShow = () => {};
 
   // Create new Card
 
@@ -103,85 +106,56 @@ function App() {
     setWeb('');
   };
 
+  //  UseRouteMatch
+  const routeData = useRouteMatch('/user/:id');
+
+  // Security if the route is not ok we get back a null
+
+  const userId = routeData !== null ? routeData.params.id : '';
+  console.log('useRouteMatch', routeData);
+
+  // Search by id//
+  const selectedUser = data.find((user) => user.id === parseInt(userId));
+
   return (
     <div className="page">
       <Header />
       <main>
-        <div>
-          <h2> Añadir elemento nuevo: </h2>
-        </div>
-        <div>
-          <label className="new-card__option">Nombre: </label>
-          <input
-            className="new-card__input"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Escribe aquí el nombre..."
-            onChange={handleName}
-            value={name}
-          />
-        </div>
-        <div>
-          <label className="new-card__option">Email: </label>
-          <input
-            className="new-card__input"
-            type="email"
-            name="email"
-            id="email"
-            placeholder="ejemplo@ejemplo.com"
-            onChange={handleEmail}
-            value={email}
-          />
-        </div>
+        <Switch>
+          {/*Paint Detail Card*/}
+          <Route exact path="/user/:id">
+            <section>
+              <CardDetail selectedUser={selectedUser} />
+            </section>
+          </Route>
 
-        <div>
-          <label className="new-card__option">Ciudad: </label>
-          <input
-            className="new-card__input"
-            type="text"
-            name="city"
-            id="city"
-            placeholder="Valladolid..."
-            onChange={handleCity}
-            value={city}
-          />
-        </div>
-        <div>
-          <label className="new-card__option">Empresa: </label>
-          <input
-            className="new-card__input"
-            type="text"
-            name="company"
-            id="company"
-            placeholder="Empresa..."
-            onChange={handleCompany}
-            value={company}
-          />
-        </div>
-        <div>
-          <label className="new-card__option">Web: </label>
-          <input
-            className="new-card__input"
-            type="text"
-            name="web"
-            id="web"
-            placeholder="Empresa..."
-            onChange={handleWeb}
-            value={web}
-          />
-        </div>
-
-        <div>
-          <input
-            className="new-card__btn"
-            type="submit"
-            value="Añadir"
-            onClick={handleClick}
-          />
-        </div>
-        {/* results list */}
-        <ul className="list">{htmlUserList}</ul>
+          <Route exact path="/">
+            {/*Add user*/}
+            <div>
+              <input
+                className="new-card__btn "
+                type="submit"
+                value="Añadir Usuario"
+                onClick={handleShow}
+              />
+            </div>
+            <CreateCard
+              handleName={handleName}
+              handleEmail={handleEmail}
+              handleCity={handleCity}
+              handleCompany={handleCompany}
+              handleWeb={handleWeb}
+              handleClick={handleClick}
+              name={name}
+              email={email}
+              city={city}
+              company={company}
+              web={web}
+            />
+            {/* results list */}
+            <ul className="list">{htmlUserList}</ul>
+          </Route>
+        </Switch>
       </main>
       <Footer />
     </div>
