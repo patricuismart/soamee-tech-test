@@ -13,7 +13,6 @@ const Header = () => {
       >
         <img className="header__logo" src={logo} alt="Logo" title="Logo" />
       </a>
-      <h1 className="header__title">Resultados</h1>
     </header>
   );
 };

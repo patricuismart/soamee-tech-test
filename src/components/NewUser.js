@@ -1,6 +1,6 @@
-const CreateCard = (props) => {
+const NewUser = (props) => {
   return (
-    <div className="new-card hidden">
+    <div className="new-card hidden" id="new_user">
       <h2 className="new-card__title"> Añadir elemento nuevo: </h2>
       <label className="new-card__option">Nombre: </label>
       <input
@@ -75,4 +75,4 @@ const CreateCard = (props) => {
     </div>
   );
 };
-export default CreateCard;
+export default NewUser;

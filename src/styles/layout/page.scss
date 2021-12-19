@@ -14,6 +14,7 @@
   @media all and (min-width: 768px) {
     justify-content: space-around;
   }
+
   &__user {
     cursor: pointer;
     list-style: none;
@@ -54,6 +55,17 @@
     &:hover {
       color: rgb(121, 144, 160);
     }
+  }
+}
+
+.list__title {
+  font-size: 1.5rem;
+  color: $purple;
+  margin: 1rem 0rem 0;
+  text-align: center;
+  @media all and (min-width: 768px) {
+    font-size: 42px;
+    margin-right: 2rem;
   }
 }
 .new-card {

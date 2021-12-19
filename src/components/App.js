@@ -6,11 +6,11 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 // Layout
 import Header from './Header';
 import Footer from './Footer';
+import NewUser from './NewUser';
 import CardDetail from './CardDetail';
 
 // services
 import DataApi from '../services/DataApi';
-import CreateCard from './CreateCard';
 
 function App() {
   // States variables
@@ -20,6 +20,8 @@ function App() {
   const [city, setCity] = useState('');
   const [company, setCompany] = useState('');
   const [web, setWeb] = useState('');
+
+  var new_user = document.getElementById('new_user');
 
   // Handle functions new card
 
@@ -37,15 +39,19 @@ function App() {
   const handleCompany = (ev) => {
     setCompany(ev.currentTarget.value);
   };
+
   const handleWeb = (ev) => {
     setWeb(ev.currentTarget.value);
   };
 
+  const handleShow = (ev) => {
+    new_user.style.visibility = 'visible';
+  };
   // useEffect//
   useEffect(() => {
     DataApi().then((data) => {
       setData(data);
-      //console.log('Useeffect data', data);
+      console.log('Useeffect data', data);
     });
   }, []);
 
@@ -61,9 +67,9 @@ function App() {
   // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlUserList
   // Then add the array with map
 
-  const htmlUserList = data.map((user, index) => (
+  const htmlUserList = data.map((user, id) => (
     <>
-      <li key={index} className="list__user">
+      <li key={id} className="list__user">
         <p className="list__user--name">Nombre: {user.name}</p>
         <p className="">
           <a href="{user.website}" className="list__user--website">
@@ -73,17 +79,13 @@ function App() {
         <div className="card__errase--container">
           <i
             className="fas fa-times-circle card__errase--btn"
-            id={index}
+            id={user.id}
             onClick={handleErrase}
           ></i>
         </div>
       </li>
     </>
   ));
-
-  //Show create new card
-
-  const handleShow = () => {};
 
   // Create new Card
 
@@ -139,7 +141,7 @@ function App() {
                 onClick={handleShow}
               />
             </div>
-            <CreateCard
+            <NewUser
               handleName={handleName}
               handleEmail={handleEmail}
               handleCity={handleCity}
@@ -153,6 +155,7 @@ function App() {
               web={web}
             />
             {/* results list */}
+            <h1 className="list__title">Resultados</h1>
             <ul className="list">{htmlUserList}</ul>
           </Route>
         </Switch>

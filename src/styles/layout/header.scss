@@ -16,12 +16,4 @@
       height: auto;
     }
   }
-  &__title {
-    font-size: 1.5rem;
-    color: $purple;
-    @media all and (min-width: 768px) {
-      font-size: 42px;
-      margin-right: 2rem;
-    }
-  }
 }
