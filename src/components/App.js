@@ -7,7 +7,8 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import NewUser from './NewUser';
-import CardDetail from './CardDetail';
+import UserList from './UserList';
+import UserDetail from './UserDetail';
 import Filters from './Filters';
 
 // services
@@ -79,29 +80,6 @@ function App() {
     user.name.toLocaleLowerCase().includes(searchName.toLocaleLowerCase())
   );
 
-  // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlUserList
-  // Then add the array with map
-
-  const htmlUserList = filteredData.map((user, id) => (
-    <>
-      <li key={id} className="list__user">
-        <p className="list__user--name">Nombre: {user.name}</p>
-        <p className="">
-          <a href="{user.website}" className="list__user--website">
-            Web:{user.website}
-          </a>
-        </p>
-        <div className="card__errase--container">
-          <i
-            className="fas fa-times-circle card__errase--btn"
-            id={user.id}
-            onClick={handleErrase}
-          ></i>
-        </div>
-      </li>
-    </>
-  ));
-
   // Create new Card
 
   const handleClick = (ev) => {
@@ -142,7 +120,7 @@ function App() {
           {/*Paint Detail Card*/}
           <Route exact path="/user/:id">
             <section>
-              <CardDetail selectedUser={selectedUser} />
+              <UserDetail selectedUser={selectedUser} />
             </section>
           </Route>
 
@@ -177,8 +155,10 @@ function App() {
               handleChangeFilter={handleChangeFilter}
             />
             {/* results list */}
-            <h1 className="list__title">Resultados</h1>
-            <ul className="list">{htmlUserList}</ul>
+
+            <section className="cards">
+              <UserList data={filteredData} handleErrase={handleErrase} />
+            </section>
           </Route>
         </Switch>
       </main>

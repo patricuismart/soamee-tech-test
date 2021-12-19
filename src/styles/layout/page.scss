@@ -7,9 +7,12 @@
   display: none;
 }
 
-.list {
-  display: flex;
-  flex-wrap: wrap;
+.card {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    text-decoration: none;
+  }
 
   @media all and (min-width: 768px) {
     justify-content: space-around;
@@ -32,6 +35,7 @@
     @media all and (min-width: 768px) {
       width: 30%;
     }
+
     &--name {
       font-size: 1.1rem;
       font-weight: bold;
@@ -46,10 +50,14 @@
     }
   }
 
-  .card__errase--container {
+  &__link {
+    text-decoration: none;
+  }
+
+  &__errase--container {
     text-align: end;
   }
-  .card__errase--btn {
+  &__errase--btn {
     color: rgb(80, 75, 75);
     padding-bottom: 5rem;
     cursor: pointer;
@@ -59,18 +67,50 @@
       color: rgb(121, 144, 160);
     }
   }
-}
+  &__title {
+    font-size: 1.3rem;
+    color: $purple;
+    margin: 1rem 0rem 0;
+    text-align: center;
+    @media all and (min-width: 768px) {
+      font-size: 30px;
+      margin-right: 2rem;
+      margin-left: 2rem;
+      text-align: start;
+    }
+  }
+  &__detail {
+    list-style: none;
+    margin: 1rem 1.4rem 10rem;
+    padding: 1rem;
+    width: 90%;
+    line-height: 2rem;
+    font-size: 1rem;
+    height: 15rem;
+    border: 1px solid (127, 194, 241);
+    background-color: $lightpurple;
+    color: $dark-grey;
+    border-radius: 1rem;
+    text-decoration: none;
+    @media all and (min-width: 768px) {
+      width: 30%;
+    }
 
-.list__title {
-  font-size: 1.3rem;
-  color: $purple;
-  margin: 1rem 0rem 0;
-  text-align: center;
-  @media all and (min-width: 768px) {
-    font-size: 30px;
-    margin-right: 2rem;
+    &--name {
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    &--website {
+      text-decoration: none;
+      color: $dark-grey;
+      font-weight: bold;
+    }
+    &:hover {
+      border: solid 0.15rem $button-color;
+    }
   }
 }
+
 .new-card {
   margin: 1rem 1.4rem 0;
   &__title {
