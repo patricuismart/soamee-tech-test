@@ -13,7 +13,7 @@ const FilterByName = (props) => {
         name="name"
         id="name"
         key="name"
-        placeholder="Patricia..."
+        placeholder="Buscar usuario..."
         value={props.searchName}
         onChange={handleChange}
       />
