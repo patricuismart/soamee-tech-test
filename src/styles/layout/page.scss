@@ -29,8 +29,11 @@
     color: $dark-grey;
     border-radius: 1rem;
     text-decoration: none;
+    @media all and (min-width: 768px) {
+      width: 30%;
+    }
     &--name {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
     }
     &--website {
@@ -59,12 +62,12 @@
 }
 
 .list__title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: $purple;
   margin: 1rem 0rem 0;
   text-align: center;
   @media all and (min-width: 768px) {
-    font-size: 42px;
+    font-size: 30px;
     margin-right: 2rem;
   }
 }
@@ -73,7 +76,7 @@
   &__title {
     padding: 3rem 0 1rem 0;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: rgb(99, 99, 99);
     border-bottom: 1px solid #eee;
   }
