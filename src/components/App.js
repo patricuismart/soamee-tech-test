@@ -8,6 +8,7 @@ import Header from './Header';
 import Footer from './Footer';
 import NewUser from './NewUser';
 import CardDetail from './CardDetail';
+import Filters from './Filters';
 
 // services
 import DataApi from '../services/DataApi';
@@ -21,7 +22,17 @@ function App() {
   const [company, setCompany] = useState('');
   const [web, setWeb] = useState('');
 
+  const [searchName, setSearchName] = useState('');
+
   var new_user = document.getElementById('new_user');
+
+  // useEffect//
+  useEffect(() => {
+    DataApi().then((data) => {
+      setData(data);
+      console.log('Useeffect data', data);
+    });
+  }, []);
 
   // Handle functions new card
 
@@ -45,15 +56,9 @@ function App() {
   };
 
   const handleShow = (ev) => {
+    ev.preventDefault();
     new_user.style.visibility = 'visible';
   };
-  // useEffect//
-  useEffect(() => {
-    DataApi().then((data) => {
-      setData(data);
-      console.log('Useeffect data', data);
-    });
-  }, []);
 
   //Errase Card button "x"
 
@@ -64,10 +69,20 @@ function App() {
     setData([...data]);
   };
 
+  const handleChangeFilter = (data) => {
+    setSearchName(data.value);
+  };
+
+  //Funciones para filtrar
+
+  const filteredData = data.filter((user) =>
+    user.name.toLocaleLowerCase().includes(searchName.toLocaleLowerCase())
+  );
+
   // For each of the data objects it will generate that html and accumulate it in an array, saved in a variable htmlUserList
   // Then add the array with map
 
-  const htmlUserList = data.map((user, id) => (
+  const htmlUserList = filteredData.map((user, id) => (
     <>
       <li key={id} className="list__user">
         <p className="list__user--name">Nombre: {user.name}</p>
@@ -142,6 +157,8 @@ function App() {
               />
             </div>
             <NewUser
+              className="new-card"
+              id="new_user"
               handleName={handleName}
               handleEmail={handleEmail}
               handleCity={handleCity}
@@ -153,6 +170,11 @@ function App() {
               city={city}
               company={company}
               web={web}
+            />
+
+            <Filters
+              searchName={searchName}
+              handleChangeFilter={handleChangeFilter}
             />
             {/* results list */}
             <h1 className="list__title">Resultados</h1>
