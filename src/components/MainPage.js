@@ -15,7 +15,7 @@ const MainPage = () => {
   const [email, setEmail] = useState('');
   const [city, setCity] = useState('');
   const [company, setCompany] = useState('');
-  const [web, setWeb] = useState('');
+  const [website, setWebSite] = useState('');
 
   const [searchName, setSearchName] = useState('');
 
@@ -46,8 +46,8 @@ const MainPage = () => {
     setCompany(ev.currentTarget.value);
   };
 
-  const handleWeb = (ev) => {
-    setWeb(ev.currentTarget.value);
+  const handleWebSite = (ev) => {
+    setWebSite(ev.currentTarget.value);
   };
 
   const handleToggleShow = (ev) => {
@@ -57,10 +57,12 @@ const MainPage = () => {
 
   //Errase Card button "x"
 
-  const handleErrase = (ev) => {
+  const handleErase = (ev) => {
     ev.preventDefault();
-    data.splice(ev.target.id, 1);
-    console.log(ev.target.id);
+    const userIndex = data.findIndex(
+      (item) => item.id === parseInt(ev.target.id)
+    );
+    data.splice(userIndex, 1);
     setData([...data]);
   };
 
@@ -83,7 +85,7 @@ const MainPage = () => {
       email: email,
       city: city,
       company: company,
-      web: web,
+      website: website,
     };
     //Clone content in data with the spread operator and then add a new card
 
@@ -92,7 +94,7 @@ const MainPage = () => {
     setEmail('');
     setCity('');
     setCompany('');
-    setWeb('');
+    setWebSite('');
   };
 
   return (
@@ -117,13 +119,13 @@ const MainPage = () => {
           handleEmail={handleEmail}
           handleCity={handleCity}
           handleCompany={handleCompany}
-          handleWeb={handleWeb}
+          handleWebSite={handleWebSite}
           handleClick={handleClick}
           name={name}
           email={email}
           city={city}
           company={company}
-          web={web}
+          website={website}
         />
       )}
 
@@ -132,7 +134,7 @@ const MainPage = () => {
         handleChangeFilter={handleChangeFilter}
       />
       {/* results list */}
-      <UserList data={filteredData} handleErrase={handleErrase} />
+      <UserList data={filteredData} handleErase={handleErase} />
     </section>
   );
 };
