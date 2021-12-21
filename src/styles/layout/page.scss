@@ -39,6 +39,7 @@
     &--name {
       font-size: 1.1rem;
       font-weight: bold;
+      text-decoration: none;
     }
     &--website {
       text-decoration: none;
@@ -97,6 +98,7 @@
     }
 
     &--name {
+      text-decoration: none;
       font-size: 1.1rem;
       font-weight: bold;
     }
@@ -104,9 +106,6 @@
       text-decoration: none;
       color: $dark-grey;
       font-weight: bold;
-    }
-    &:hover {
-      border: solid 0.15rem $button-color;
     }
   }
 }
