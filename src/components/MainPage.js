@@ -9,7 +9,7 @@ import UserList from './UserList';
 import Filters from './Filters';
 
 const MainPage = () => {
-  // States variables
+  // States
   const [data, setData] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,6 +18,8 @@ const MainPage = () => {
   const [web, setWeb] = useState('');
 
   const [searchName, setSearchName] = useState('');
+
+  const [isNewUserFormVisible, setIsNewUserFormVisible] = useState(false);
 
   // useEffect//
   useEffect(() => {
@@ -48,8 +50,9 @@ const MainPage = () => {
     setWeb(ev.currentTarget.value);
   };
 
-  const handleShow = (ev) => {
+  const handleToggleShow = (ev) => {
     ev.preventDefault();
+    setIsNewUserFormVisible(!isNewUserFormVisible);
   };
 
   //Errase Card button "x"
@@ -100,25 +103,29 @@ const MainPage = () => {
         <input
           className="new-card__btn "
           type="submit"
-          value="Añadir Usuario"
-          onClick={handleShow}
+          value={
+            isNewUserFormVisible ? 'Ocultar formulario' : 'Agregar usuario'
+          }
+          onClick={handleToggleShow}
         />
       </div>
-      <NewUser
-        className="new-card"
-        id="new_user"
-        handleName={handleName}
-        handleEmail={handleEmail}
-        handleCity={handleCity}
-        handleCompany={handleCompany}
-        handleWeb={handleWeb}
-        handleClick={handleClick}
-        name={name}
-        email={email}
-        city={city}
-        company={company}
-        web={web}
-      />
+      {isNewUserFormVisible && (
+        <NewUser
+          className="new-card"
+          id="new_user"
+          handleName={handleName}
+          handleEmail={handleEmail}
+          handleCity={handleCity}
+          handleCompany={handleCompany}
+          handleWeb={handleWeb}
+          handleClick={handleClick}
+          name={name}
+          email={email}
+          city={city}
+          company={company}
+          web={web}
+        />
+      )}
 
       <Filters
         searchName={searchName}

@@ -1,7 +1,7 @@
 const NewUser = (props) => {
   return (
-    <div className="new-card hidden" id="new_user">
-      <h2 className="new-card__title"> Añadir elemento nuevo: </h2>
+    <div className="new-card">
+      <h2 className="new-card__title"> Añadir nuevo usuario </h2>
       <label className="new-card__option">Nombre: </label>
       <input
         className="new-card__input"
