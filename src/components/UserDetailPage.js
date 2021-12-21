@@ -27,13 +27,6 @@ const UserDetailPage = () => {
   return (
     <>
       <div className="card__detail">
-        <Link className="card__link" to="/">
-          <i
-            className="fas fa-times-circle icon "
-            alt="Atrás"
-            title="Atrás"
-          ></i>
-        </Link>
         <section className="detail__item">
           <p className="card__user--name">Nombre: {userData.name}</p>
           <p className="card__user--email">Email: {userData.email}</p>
@@ -44,6 +37,13 @@ const UserDetailPage = () => {
               Web:{userData.website}
             </a>
           </p>
+          <Link className="card__link" to="/">
+            <i
+              className="fas fa-times-circle icon "
+              alt="Atrás"
+              title="Atrás"
+            ></i>
+          </Link>
         </section>
       </div>
     </>

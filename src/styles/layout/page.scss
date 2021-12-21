@@ -21,19 +21,22 @@
     padding: 1rem;
     width: 95%;
     line-height: 2rem;
-    font-size: em;
-    height: 7rem;
+    font-size: 1em;
+    height: 8rem;
     border: 1px solid (127, 194, 241);
     background-color: $lightpurple;
     color: $dark-grey;
     border-radius: 1rem;
     text-decoration: none;
     @media all and (min-width: 768px) {
-      width: 30%;
+      width: 40%;
+    }
+    @media all and (min-width: 1024px) {
+      width: 20%;
     }
 
     &--name {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       text-decoration: none;
     }
@@ -78,7 +81,7 @@
   }
   &__detail {
     list-style: none;
-    margin: 1rem 1.4rem 10rem;
+    margin: 1rem 1.4rem 5rem;
     padding: 1rem;
     width: 90%;
     line-height: 2rem;
@@ -90,7 +93,9 @@
     border-radius: 1rem;
     text-decoration: none;
     @media all and (min-width: 768px) {
-      width: 30%;
+      padding: 2rem;
+      width: 40%;
+      height: 16rem;
     }
 
     &--name {
@@ -103,6 +108,16 @@
       color: $dark-grey;
       font-weight: bold;
     }
+  }
+}
+.icon {
+  color: rgb(80, 75, 75);
+  padding-top: 1rem;
+  cursor: pointer;
+  transform: scale(1.5);
+
+  &:hover {
+    color: rgb(121, 144, 160);
   }
 }
 
