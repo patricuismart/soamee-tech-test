@@ -1,7 +1,6 @@
 // File src/components/App.js
 import '../styles/main.scss';
-import React, { useState, useEffect } from 'react';
-import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Layout
 import Header from './Header';
