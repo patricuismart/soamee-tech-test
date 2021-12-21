@@ -22,6 +22,9 @@ function App() {
             {/*Paint Detail Card*/}
             <UserDetailPage selectedUser={null} />
           </Route>
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </main>
       <Footer />
