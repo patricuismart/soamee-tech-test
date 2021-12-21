@@ -1,10 +1,32 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+
 import '../styles/main.scss';
+import DataApi from '../services/DataApi';
 import { Link } from 'react-router-dom';
 
-const UserDetail = (props) => {
+const UserDetailPage = () => {
+  const { userId } = useParams();
+  const history = useHistory();
+  const [userData, setUserData] = useState({});
+
+  //Call to api find user by id only get back one element with index 0
+
+  useEffect(() => {
+    DataApi(userId).then((data) => {
+      if (data.length === 1) {
+        setUserData(data[0]);
+
+        // answer when id not found
+      } else {
+        history.push('/not-found');
+      }
+    });
+  }, []);
+
   return (
     <>
-      <li className="card__detail" key={props.id}>
+      <div className="card__detail">
         <Link className="card__link" to="/">
           <i
             className="fas fa-times-circle icon "
@@ -13,24 +35,19 @@ const UserDetail = (props) => {
           ></i>
         </Link>
         <section className="detail__item">
-          <p className="card__user--name">Nombre: {props.selectedUser.name}</p>
-          <p className="card__user--email">Email: {props.selectedUser.email}</p>
-          <p className="card__user--city">Ciudad: {props.selectedUser.city}</p>
-          <p className="card__user--company">
-            Empresa: {props.selectedUser.company}
-          </p>
+          <p className="card__user--name">Nombre: {userData.name}</p>
+          <p className="card__user--email">Email: {userData.email}</p>
+          <p className="card__user--city">Ciudad: {userData.city}</p>
+          <p className="card__user--company">Empresa: {userData.company}</p>
           <p className="">
-            <a
-              href="{props.selectedUser.website}"
-              className="card__user--website"
-            >
-              Web:{props.selectedUser.website}
+            <a href={userData.website} className="card__user--website">
+              Web:{userData.website}
             </a>
           </p>
         </section>
-      </li>
+      </div>
     </>
   );
 };
 
-export default UserDetail;
+export default UserDetailPage;
