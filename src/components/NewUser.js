@@ -1,19 +1,19 @@
 const NewUser = (props) => {
   return (
     <div className="new-card">
-      <h2 className="new-card__title"> Añadir nuevo usuario </h2>
-      <label className="new-card__option">Nombre: </label>
-      <input
-        className="new-card__input"
-        type="text"
-        name="name"
-        id="name"
-        placeholder="Escribe aquí el nombre..."
-        onChange={props.handleName}
-        value={props.name}
-      />
-
-      <div>
+      <div className="new-card__container">
+        <label className="new-card__option">Nombre: </label>
+        <input
+          className="new-card__input"
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Escribe aquí el nombre..."
+          onChange={props.handleName}
+          value={props.name}
+        />
+      </div>
+      <div className="new-card__container">
         <label className="new-card__option">Email: </label>
         <input
           className="new-card__input"
@@ -26,7 +26,7 @@ const NewUser = (props) => {
         />
       </div>
 
-      <div>
+      <div className="new-card__container">
         <label className="new-card__option">Ciudad: </label>
         <input
           className="new-card__input"
@@ -38,7 +38,7 @@ const NewUser = (props) => {
           value={props.city}
         />
       </div>
-      <div>
+      <div className="new-card__container">
         <label className="new-card__option">Empresa: </label>
         <input
           className="new-card__input"
@@ -51,7 +51,7 @@ const NewUser = (props) => {
         />
       </div>
 
-      <div>
+      <div className="new-card__container">
         <label className="new-card__option">Web: </label>
         <input
           className="new-card__input"
@@ -64,9 +64,9 @@ const NewUser = (props) => {
         />
       </div>
 
-      <div>
+      <div className="new-card__container">
         <input
-          className="new-card__btn"
+          className="new-card__addbuton"
           type="submit"
           value="Añadir"
           onClick={props.handleClick}
