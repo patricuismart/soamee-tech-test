@@ -1,21 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-// services
 import DataApi from '../services/DataApi';
-
-// Components
 import NewUser from './NewUser';
 import UserList from './UserList';
 import Filters from './Filters';
 
 const MainPage = () => {
-  // States
   const [data, setData] = useState([]);
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [city, setCity] = useState('');
-  // const [company, setCompany] = useState('');
-  // const [website, setWebSite] = useState('');
 
   const [newUserData, setNewUserData] = useState({
     name: '',
@@ -25,39 +16,18 @@ const MainPage = () => {
     website: '',
   });
 
-  const [searchName, setSearchName] = useState('');
-
   const [isNewUserFormVisible, setIsNewUserFormVisible] = useState(false);
+
+  const [searchName, setSearchName] = useState('');
 
   // useEffect//
   useEffect(() => {
     DataApi().then((data) => {
       setData(data);
-      console.log('Useeffect data', data);
     });
   }, []);
 
   // Handle functions new card
-
-  // const handleName = (ev) => {
-  //   setName(ev.currentTarget.value);
-  // };
-
-  // const handleEmail = (ev) => {
-  //   setEmail(ev.currentTarget.value);
-  // };
-
-  // const handleCity = (ev) => {
-  //   setCity(ev.currentTarget.value);
-  // };
-  // const handleCompany = (ev) => {
-  //   setCompany(ev.currentTarget.value);
-  // };
-
-  // const handleWebSite = (ev) => {
-  //   setWebSite(ev.currentTarget.value);
-  // };
-
   const handleSetNewUserData = (field, value) => {
     setNewUserData({ ...newUserData, [field]: value });
   };
@@ -88,8 +58,6 @@ const MainPage = () => {
     user.name.toLocaleLowerCase().includes(searchName.toLocaleLowerCase())
   );
 
-  // Create new Card
-
   const handleClick = (ev) => {
     ev.preventDefault();
     const newCard = {
@@ -102,18 +70,12 @@ const MainPage = () => {
     //Clone content in data with the spread operator and then add a new card
 
     setData([...data, newCard]);
-    // setName('');
-    // setEmail('');
-    // setCity('');
-    // setCompany('');
-    // setWebSite('');
     setNewUserData({ name: '', email: '', city: '', company: '', website: '' });
   };
 
   return (
     <section className="cards">
       {/*Add user*/}
-
       <div>
         <input
           className="new-card__btn "
@@ -128,16 +90,6 @@ const MainPage = () => {
         <NewUser
           className="new-card"
           id="new_user"
-          // handleName={handleName}
-          // handleEmail={handleEmail}
-          // handleCity={handleCity}
-          // handleCompany={handleCompany}
-          // handleWebSite={handleWebSite}
-          // name={name}
-          // email={email}
-          // city={city}
-          // company={company}
-          // website={website}
           formData={newUserData}
           setFormData={handleSetNewUserData}
           handleClick={handleClick}
