@@ -123,16 +123,8 @@
 
 .new-card {
   max-width: 600px;
-
+  margin: 1rem 1.4rem 0;
   border-radius: 2px;
-
-  &__title {
-    padding: 3rem 0 1rem 0;
-    margin-bottom: 1rem;
-    font-size: 1.3rem;
-    color: rgb(99, 99, 99);
-    border-bottom: 1px solid #eee;
-  }
 
   &__container {
     color: rgb(99, 99, 99);
@@ -144,6 +136,7 @@
     position: relative;
     width: 100%;
     padding: 0.5em;
+
     @media only screen and (min-width: 600px) {
       &.col-5 {
         width: 50%;
@@ -152,6 +145,8 @@
   }
 
   &__input {
+    margin-bottom: 0.3rem;
+    margin-top: 0.3rem;
     padding: 0.5rem;
     border: 2px solid #ddd;
     border-radius: 0.5rem;
@@ -162,6 +157,9 @@
     width: 100%;
     transition: all 0.3s;
     height: 2em;
+    @media only screen and (min-width: 768px) {
+      width: 50%;
+    }
 
     &:focus {
       border-color: rgb(99, 99, 99);
@@ -172,6 +170,7 @@
 
   &__btn {
     margin-left: 2rem;
+    margin: 1rem;
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
     border: none;

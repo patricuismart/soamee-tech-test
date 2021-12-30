@@ -1,6 +1,5 @@
 const NewUser = ({ formData, handleClick, setFormData }) => (
   <div className="new-card" id="new_user">
-    <h2 className="new-card__title"> Añadir elemento nuevo: </h2>
     <label className="new-card__option">Nombre: </label>
     <input
       className="new-card__input"
