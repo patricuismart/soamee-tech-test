@@ -11,11 +11,19 @@ import Filters from './Filters';
 const MainPage = () => {
   // States
   const [data, setData] = useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [city, setCity] = useState('');
-  const [company, setCompany] = useState('');
-  const [website, setWebSite] = useState('');
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [city, setCity] = useState('');
+  // const [company, setCompany] = useState('');
+  // const [website, setWebSite] = useState('');
+
+  const [newUserData, setNewUserData] = useState({
+    name: '',
+    email: '',
+    city: '',
+    company: '',
+    website: '',
+  });
 
   const [searchName, setSearchName] = useState('');
 
@@ -31,23 +39,27 @@ const MainPage = () => {
 
   // Handle functions new card
 
-  const handleName = (ev) => {
-    setName(ev.currentTarget.value);
-  };
+  // const handleName = (ev) => {
+  //   setName(ev.currentTarget.value);
+  // };
 
-  const handleEmail = (ev) => {
-    setEmail(ev.currentTarget.value);
-  };
+  // const handleEmail = (ev) => {
+  //   setEmail(ev.currentTarget.value);
+  // };
 
-  const handleCity = (ev) => {
-    setCity(ev.currentTarget.value);
-  };
-  const handleCompany = (ev) => {
-    setCompany(ev.currentTarget.value);
-  };
+  // const handleCity = (ev) => {
+  //   setCity(ev.currentTarget.value);
+  // };
+  // const handleCompany = (ev) => {
+  //   setCompany(ev.currentTarget.value);
+  // };
 
-  const handleWebSite = (ev) => {
-    setWebSite(ev.currentTarget.value);
+  // const handleWebSite = (ev) => {
+  //   setWebSite(ev.currentTarget.value);
+  // };
+
+  const handleSetNewUserData = (field, value) => {
+    setNewUserData({ ...newUserData, [field]: value });
   };
 
   const handleToggleShow = (ev) => {
@@ -81,20 +93,21 @@ const MainPage = () => {
   const handleClick = (ev) => {
     ev.preventDefault();
     const newCard = {
-      name: name,
-      email: email,
-      city: city,
-      company: company,
-      website: website,
+      name: newUserData.name,
+      email: newUserData.email,
+      city: newUserData.city,
+      company: newUserData.company,
+      website: newUserData.website,
     };
     //Clone content in data with the spread operator and then add a new card
 
     setData([...data, newCard]);
-    setName('');
-    setEmail('');
-    setCity('');
-    setCompany('');
-    setWebSite('');
+    // setName('');
+    // setEmail('');
+    // setCity('');
+    // setCompany('');
+    // setWebSite('');
+    setNewUserData({ name: '', email: '', city: '', company: '', website: '' });
   };
 
   return (
@@ -115,17 +128,19 @@ const MainPage = () => {
         <NewUser
           className="new-card"
           id="new_user"
-          handleName={handleName}
-          handleEmail={handleEmail}
-          handleCity={handleCity}
-          handleCompany={handleCompany}
-          handleWebSite={handleWebSite}
+          // handleName={handleName}
+          // handleEmail={handleEmail}
+          // handleCity={handleCity}
+          // handleCompany={handleCompany}
+          // handleWebSite={handleWebSite}
+          // name={name}
+          // email={email}
+          // city={city}
+          // company={company}
+          // website={website}
+          formData={newUserData}
+          setFormData={handleSetNewUserData}
           handleClick={handleClick}
-          name={name}
-          email={email}
-          city={city}
-          company={company}
-          website={website}
         />
       )}
 
